@@ -119,14 +119,13 @@ $this->title = Yii::t('ngp/ofoms', 'Ofoms Portal');
                             'data-pjax' => '0'
                         ]);
                     }] : []),
-                'customButtons' => [
+                'customButtons' => array_merge(Yii::$app->getUser()->can(RbacHelper::NGP_OFOMS_PRIK_LIST) ? [
                     '{divider}',
                     Html::a(Yii::t('ngp/ofoms', 'Attach with list'), ['ofoms/attach-list'], ['class' => 'btn btn-xs pmd-btn-flat pmd-ripple-effect btn-success', 'data-pjax' => '0'])
-                ],
+                ] : []),
                 'toolbar' => [
                     Html::errorSummary($searchModel, ['class' => 'wk-ofoms-errors']),
                 ],
-                'leftBottomToolbar' => Html::a(Yii::t('ngp/ofoms', 'Attach with list'), ['ofoms/attach-list'], ['class' => 'btn pmd-btn-flat pmd-ripple-effect btn-success', 'data-pjax' => '0']),
                 'panelHeading' => [
                     'icon' => FA::icon(FA::_MALE),
                     'title' => Yii::t('ngp/ofoms', 'Results'),
