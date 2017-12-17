@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('#ofoms_search').on('keypress', function (e) {
         if (e.which === 13 && $(this).val() !== '') {
+            $(".wk-ofoms-container-results").fadeIn();
             reloadGrid();
         }
     });
@@ -22,6 +23,10 @@ $(document).ready(function () {
     $(".wk-ofoms-attach-list-button").click(function () {
         $(".wk-ofoms-attach-list-input").click();
     });
+
+    if ($('#ofoms_search').val() !== "") {
+        $(".wk-ofoms-container-results").fadeIn();
+    }
 });
 
 var reloadGrid = function () {

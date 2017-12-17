@@ -41,4 +41,6 @@ return [
     'Type to search input and press Enter button' => 'Введите строку поиска и нажмите клавишу Enter на клавиатуре',
     'Vrach' => 'Врач',
     'Ofoms Portal' => 'Портал проверки полисов пациентов ОФОМС',
+    'Results' => 'Результаты поиска',
+    'Enter search string' => 'Введите строку поиска',
 ];
