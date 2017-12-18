@@ -13,7 +13,7 @@ return [
     //'layoutPath' => '@app/views/layouts',
     'components' => [
         'urlManager' => [
-            'class' => 'yii\web\urlManager',
+            'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
         ],
