@@ -11,7 +11,7 @@
  */
 return [
     'sourcePath' => '@ngp',
-    'messagePath' => 'ngp/messages',
+    'messagePath' => '@ngp/messages',
     'languages' => ['ru-RU'],
     'ignoreCategories' => [
         'common*',

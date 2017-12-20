@@ -42,4 +42,13 @@ class RbacHelper
      * @var string Роль 'Пакетное прикрепление списком пациентов к врачам ЛПУ на портале ОФОМС'
      */
     const NGP_OFOMS_PRIK_LIST = 'ofomsPrikListNGP';
+    /**
+     * @var string Разрешение 'Редактирование контактов IP Телефонии'
+     */
+    const IP_CONTACT_EDIT = 'ipContactEdit';
+    /**
+     * @var string Роль 'Оператор контактов IP Телефонии'
+     */
+    const IP_CONTACT_OPERATOR = 'ipContactOperator';
+
 }
