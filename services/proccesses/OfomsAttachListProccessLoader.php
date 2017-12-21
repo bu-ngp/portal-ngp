@@ -102,14 +102,10 @@ class OfomsAttachListProccessLoader extends ProcessLoader
             $this->startRow += self::CHUNK_SIZE;
         }
 
+        $this->removeTmpFile();
+
         if ($this->error) {
             /** @var \PHPExcel_Writer_CSV $objWriter */
-//            $objWriter = \PHPExcel_IOFactory::createWriter($this->objPHPExcelReport, 'CSV');
-//            $objWriter->setDelimiter(';');
-//            $reportPath = Yii::getAlias('@ngp/reports_attach-list/' . date('Y-m-d') . time() . '.csv');
-//            $objWriter->save($reportPath);
-//            file_put_contents($reportPath, mb_convert_encoding(file_get_contents($reportPath), 'windows-1251', 'UTF-8'));
-//            $this->addFile($reportPath, 'Результат прикрепления.csv');
 
             if ($this->reportRowCountBuffer > 0) {
                 $this->saveReport();
@@ -119,7 +115,6 @@ class OfomsAttachListProccessLoader extends ProcessLoader
         $successPercent = round($this->success * 100 / $this->rows, 1);
         $errorPercent = round($this->error * 100 / $this->rows, 1);
         $this->addShortReport("Итоги обработки:\n- Всего записей: {$this->rows};\n- Успешно ($successPercent%): {$this->success};\n- Ошибок ($errorPercent%): {$this->error};");
-//            file_put_contents('test.txt', 'goood', FILE_APPEND);
     }
 
     protected function addReportHeader()
@@ -222,5 +217,12 @@ class OfomsAttachListProccessLoader extends ProcessLoader
         $objReader = \PHPExcel_IOFactory::createReader('Excel2007');
         $this->objPHPExcelReport = $objReader->load($this->reportPath);
         $this->sheetReport = $this->objPHPExcelReport->getActiveSheet();
+    }
+
+    protected function removeTmpFile()
+    {
+        if (file_exists($this->fileName)) {
+            unlink($this->fileName);
+        }
     }
 }

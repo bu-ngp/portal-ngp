@@ -29,7 +29,7 @@ class OfomsAttachListForm extends Model
     public function beforeValidate()
     {
         if ($this->listFile !== null) {
-            $this->listFile->saveAs($this->listFile->tempName);
+            $this->listFile->saveAs($this->listFile->tempName, false);
         }
 
         return parent::beforeValidate();
