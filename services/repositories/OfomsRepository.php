@@ -43,7 +43,7 @@ class OfomsRepository
                     ])
                     ->setData([
                         'username' => $this->configOfoms->config_ofoms_login,
-                        'password' => Yii::$app->security->decryptByPassword($this->configOfoms->config_ofoms_password, Yii::$app->request->cookieValidationKey),
+                        'password' => Yii::$app->security->decryptByPassword($this->configOfoms->config_ofoms_password, Yii::$app->params['configOfomsCrypt'] ?: 'test'),
                         'rtype' => 'json',
                         's' => $searchString,
                     ])
