@@ -59,7 +59,7 @@ class ConfigOfoms extends \yii\db\ActiveRecord
         $this->config_ofoms_url = $form->config_ofoms_url;
         $this->config_ofoms_url_prik = $form->config_ofoms_url_prik;
         $this->config_ofoms_login = $form->config_ofoms_login;
-        $this->config_ofoms_password = Yii::$app->security->encryptByPassword($form->config_ofoms_password, Yii::$app->request->cookieValidationKey);
+        $this->config_ofoms_password = Yii::$app->security->encryptByPassword($form->config_ofoms_password, Yii::$app->params['configOfomsCrypt'] ?: 'test');
         $this->config_ofoms_remote_host_name = $form->config_ofoms_remote_host_name;
         $this->config_ofoms_active = $form->config_ofoms_active;
     }

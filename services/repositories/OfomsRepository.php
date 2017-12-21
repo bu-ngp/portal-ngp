@@ -57,11 +57,11 @@ class OfomsRepository
                     }
                 } else {
                     Yii::$app->response->format = WebResponse::FORMAT_JSON;
-                    throw new \DomainException(Yii::t('ngp/ofoms','Connection Error With OFOMS'));
+                    throw new \DomainException(Yii::t('ngp/ofoms', 'Connection Error With OFOMS'));
                 }
             } catch (\Exception $e) {
                 Yii::$app->response->format = WebResponse::FORMAT_JSON;
-                throw new \DomainException(Yii::t('ngp/ofoms','Connection Error With OFOMS'));
+                throw new \DomainException(Yii::t('ngp/ofoms', 'Connection Error With OFOMS'));
             }
         }
 
@@ -92,7 +92,7 @@ class OfomsRepository
                     'doctor' => $doctor,
                     'rtype' => 'json',
                     'username' => $this->configOfoms->config_ofoms_login,
-                    'password' => Yii::$app->security->decryptByPassword($this->configOfoms->config_ofoms_password, 'FAMBuvzILQaR_U7GwIsUZXUtfXCgET1R'),
+                    'password' => Yii::$app->security->decryptByPassword($this->configOfoms->config_ofoms_password, Yii::$app->params['configOfomsCrypt'] ?: 'test'),
                 ])
                 ->send();
 
