@@ -41,7 +41,7 @@ class OfomsAttachListProccessLoader extends ProcessLoader
     {
         $this->form = $form;
         $this->reportName = date('Y-m-d') . time() . '.xlsx';
-        $this->fileName = $this->form->listFile->tempName;
+        $this->fileName = Yii::getAlias('@ngp/runtime/tmpfiles/')  . basename($this->form->listFile->tempName);
         $this->objPHPExcelReport = new \PHPExcel();
         $this->sheetReport = $this->objPHPExcelReport->getActiveSheet();
         $this->addReportHeader();

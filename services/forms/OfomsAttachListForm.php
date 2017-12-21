@@ -26,12 +26,12 @@ class OfomsAttachListForm extends Model
         ];
     }
 
-    public function beforeValidate()
+    public function afterValidate()
     {
         if ($this->listFile !== null) {
-            $this->listFile->saveAs($this->listFile->tempName, false);
+            $this->listFile->saveAs(Yii::getAlias('@ngp/runtime/tmpfiles/') . basename($this->listFile->tempName));
         }
 
-        return parent::beforeValidate();
+        parent::afterValidate();
     }
 }
