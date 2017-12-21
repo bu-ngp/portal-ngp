@@ -50,7 +50,10 @@ $this->title = Yii::t('ngp/ofoms', 'Ofoms Portal');
                         'attribute' => 'att_doct_amb',
                         'visible' => false,
                     ],
-                    'ofomsVrach',
+                    [
+                        'attribute' => 'ofomsVrach',
+                        'noWrap' => false,
+                    ],
                     [
                         'attribute' => 'att_lpu_amb',
                         'visible' => false,
