@@ -42,6 +42,7 @@ button > i.fa, a > i.fa {
 
 .wk-tiles-image-container > div:last-child, .wk-tiles-icon-container > div:last-child {
     padding-left: 0;
+    margin-left: 15px;
 }
 
 #tilesform-tiles_description {
