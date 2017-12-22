@@ -13,7 +13,7 @@ use common\widgets\GridView\services\AjaxResponse;
 use ngp\services\forms\IpContactForm;
 use domain\services\AjaxFilter;
 use ngp\services\services\IpContactService;
-use domain\services\proxyService;
+use domain\services\ProxyService;
 use yii\filters\ContentNegotiator;
 use yii\filters\AccessControl;
 use yii\web\Response;
@@ -31,7 +31,7 @@ class IpContactController extends Controller
 
     public function __construct($id, $module, IpContactService $service, $config = [])
     {
-        $this->service = new proxyService($service);
+        $this->service = new ProxyService($service);
         parent::__construct($id, $module, $config = []);
     }
 
