@@ -2,8 +2,10 @@
 
 namespace ngp\services\models;
 
+use ngp\services\rules\IpContactGroupRules;
 use Yii;
 use ngp\services\forms\IpContactGroupsForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "wk_ip_contact_groups".
@@ -28,11 +30,9 @@ class IpContactGroups extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
-            [['ip_contact_groups_name'], 'required'],
-            [['ip_contact_groups_name'], 'string', 'max' => 255],
+        return ArrayHelper::merge(IpContactGroupRules::client(), [
             [['ip_contact_groups_name'], 'unique'],
-        ];
+        ]);
     }
 
     /**

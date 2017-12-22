@@ -14,26 +14,26 @@ $this->title = Yii::t('ngp/ip-contact', 'Ip Contacts');
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-        <?= GridView::widget([
-            'dataProvider' => $dataProvider,
-            'filterModel' => $searchModel,
-            'exportGrid' => [
-                'idReportLoader' => 'wk-Report-Loader',
-            ],
-            'columns' => [
-                'ip_contact_name',
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'exportGrid' => [
+            'idReportLoader' => 'wk-Report-Loader',
+        ],
+        'columns' => [
+            'ip_contact_name',
             'ip_contact_phone',
-            'ip_contact_groups_id',
-            ],
-            'crudSettings' => [
-                'create' => 'ip-contact/create',
-                'update' => 'ip-contact/update',
-                'delete' => 'ip-contact/delete',
-            ],
-            'panelHeading' => [
-                'icon' => FA::icon(FA::_BARS),
-                'title' => Yii::t('ngp/ip-contact', 'Ip Contacts'),
-            ],
+            'ipContactGroups.ip_contact_groups_name',
+        ],
+        'crudSettings' => [
+            'create' => 'ip-contact/create',
+            'update' => 'ip-contact/update',
+            'delete' => 'ip-contact/delete',
+        ],
+        'panelHeading' => [
+            'icon' => FA::icon(FA::_PHONE_SQUARE),
+            'title' => Yii::t('ngp/ip-contact', 'Ip Contacts'),
+        ],
     ]); ?>
 
 </div>

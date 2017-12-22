@@ -17,8 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Update Tiles' => 'Обновить плитку на главной странице',
-    'Update "{modelClass}": ' => '@@@@',
     'Choose Icon' => 'Выберите иконку превью',
     'Close' => 'Закрыть',
     'Create Tiles' => 'Добавить плитку на главной странице',
@@ -35,5 +33,6 @@ return [
     'Tiles Link' => 'Ссылка',
     'Tiles Name' => 'Название',
     'Tiles Thumbnail' => 'Превью',
+    'Update Tiles' => 'Обновить плитку на главной странице',
     'Upload Image' => 'Загрузить картинку',
 ];

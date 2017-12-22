@@ -17,9 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'List File' => 'Файл список пациентов',
-    'Connection Error' => '@@Ошибка соединения@@',
-    'Ofoms search' => '@@Поиск@@',
     'Attach' => 'Прикрепить пациента',
     'Attach with list' => 'Прикрепление списком',
     'Attached' => 'Прикреплен',
@@ -33,6 +30,7 @@ return [
     'Connection Error With OFOMS' => 'Ошибка соединения с порталом ОФОМС',
     'Don\'t attached to LPU' => 'Не прикреплен к ЛПУ',
     'Enter search string' => 'Введите строку поиска',
+    'List File' => 'Файл список пациентов',
     'Non Attached' => 'Не прикреплен',
     'Ofoms Portal' => 'Портал проверки полисов пациентов ОФОМС',
     'Ofoms search rules' => 'Правила поиска',

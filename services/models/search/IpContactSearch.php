@@ -4,6 +4,8 @@ namespace ngp\services\models\search;
 
 use ngp\services\models\IpContact;
 use domain\services\SearchModel;
+use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
 
 class IpContactSearch extends SearchModel
 {
@@ -17,7 +19,7 @@ class IpContactSearch extends SearchModel
         return [
             'ip_contact_name',
             'ip_contact_phone',
-            'ip_contact_groups_id',
+            'ipContactGroups.ip_contact_groups_name',
         ];
     }
 
@@ -26,10 +28,17 @@ class IpContactSearch extends SearchModel
         return ['ip_contact_name' => SORT_ASC];
     }
 
+    public function beforeLoad(ActiveQuery $query, ActiveDataProvider $dataProvider, $params)
+    {
+        $query->joinWith([
+            'ipContactGroups',
+        ]);
+    }
+
     public function filter()
     {
         return [
-
+            [['ip_contact_name', 'ip_contact_phone', 'ipContactGroups.ip_contact_groups_name'], SearchModel::CONTAIN],
         ];
     }
 }

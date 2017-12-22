@@ -17,12 +17,15 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Create Ip Contact Groups' => 'Создать группу контактов',
+    'Ip Contact Groups' => 'Группы контактов',
+    'Ip Contact ID' => 'Контакт',
+    'Update Ip Contact' => 'Обновить контакт',
+    'Update Ip Contact Group' => 'Обновить группу контактов',
     'Create Ip Contact' => 'Создать контакт',
-    'Ip Contact Groups ID' => '',
+    'Ip Contact Groups ID' => 'Группа',
     'Ip Contact Groups Name' => 'Группа',
-    'Ip Contact ID' => '',
     'Ip Contact Name' => 'Имя',
     'Ip Contact Phone' => 'Телефон',
     'Ip Contacts' => 'Контакты IP телефонии',
-    'Update "{modelClass}": ' => '',
 ];

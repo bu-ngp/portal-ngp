@@ -3,16 +3,15 @@
 namespace ngp\controllers;
 
 use ngp\helpers\RbacHelper;
-use ngp\services\models\search\IpContactGroupsSearch;
 use Yii;
-use ngp\services\models\IpContact;
-use ngp\services\models\search\IpContactSearch;
+use ngp\services\models\IpContactGroups;
+use ngp\services\models\search\IpContactGroupsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use common\widgets\GridView\services\AjaxResponse;
-use ngp\services\forms\IpContactForm;
+use ngp\services\forms\IpContactGroupsForm;
 use domain\services\AjaxFilter;
-use ngp\services\services\IpContactService;
+use ngp\services\services\IpContactGroupsService;
 use domain\services\proxyService;
 use yii\filters\ContentNegotiator;
 use yii\filters\AccessControl;
@@ -20,16 +19,15 @@ use yii\web\Response;
 use common\widgets\Breadcrumbs\Breadcrumbs;
 
 /**
- * IpContactController implements the CRUD actions for IpContact model.
+ * IpContactGroupsController implements the CRUD actions for IpContactGroups model.
  */
-class IpContactController extends Controller
+class IpContactGroupsController extends Controller
 {
     /**
-     * @var $service IpContactService
-     */
+    * @var $service IpContactGroupsService */
     private $service;
 
-    public function __construct($id, $module, IpContactService $service, $config = [])
+    public function __construct($id, $module, IpContactGroupsService $service, $config = [])
     {
         $this->service = new proxyService($service);
         parent::__construct($id, $module, $config = []);
@@ -67,7 +65,7 @@ class IpContactController extends Controller
 
     public function actionIndex()
     {
-        $searchModel = new IpContactSearch();
+        $searchModel = new IpContactGroupsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -78,7 +76,7 @@ class IpContactController extends Controller
 
     public function actionCreate()
     {
-        $form = new IpContactForm();
+        $form = new IpContactGroupsForm();
 
         if ($form->load(Yii::$app->request->post())
             && $form->validate()
@@ -95,12 +93,12 @@ class IpContactController extends Controller
 
     public function actionUpdate($id)
     {
-        $ipContact = $this->service->find($id);
-        $form = new IpContactForm($ipContact);
+        $ipContactGroups = $this->service->find($id);
+        $form = new IpContactGroupsForm($ipContactGroups);
 
         if ($form->load(Yii::$app->request->post())
             && $form->validate()
-            && $this->service->update($ipContact->primaryKey, $form)
+            && $this->service->update($ipContactGroups->primaryKey, $form)
         ) {
             Yii::$app->session->setFlash('success', Yii::t('common', 'Record is saved.'));
             return $this->redirect(Breadcrumbs::previousUrl());

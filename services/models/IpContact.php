@@ -2,8 +2,10 @@
 
 namespace ngp\services\models;
 
+use ngp\services\rules\IpContactRules;
 use Yii;
 use ngp\services\forms\IpContactForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "wk_ip_contact".
@@ -30,13 +32,10 @@ class IpContact extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [
-            [['ip_contact_name', 'ip_contact_phone', 'ip_contact_groups_id'], 'required'],
-            [['ip_contact_groups_id'], 'integer'],
-            [['ip_contact_name', 'ip_contact_phone'], 'string', 'max' => 255],
+        return ArrayHelper::merge(IpContactRules::client(), [
             [['ip_contact_name', 'ip_contact_phone'], 'unique', 'targetAttribute' => ['ip_contact_name', 'ip_contact_phone'], 'message' => 'The combination of Ip Contact Name and Ip Contact Phone has already been taken.'],
             [['ip_contact_groups_id'], 'exist', 'skipOnError' => true, 'targetClass' => IpContactGroups::className(), 'targetAttribute' => ['ip_contact_groups_id' => 'ip_contact_groups_id']],
-        ];
+        ]);
     }
 
     /**
