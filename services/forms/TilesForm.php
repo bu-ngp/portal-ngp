@@ -55,6 +55,9 @@ class TilesForm extends Model
         return array_merge(TilesRules::client(), [
             [['tiles_thumbnail_x', 'tiles_thumbnail_x2', 'tiles_thumbnail_y', 'tiles_thumbnail_y2', 'tiles_thumbnail_w', 'tiles_thumbnail_h'], 'safe'],
             [['tiles_thumbnail_x', 'tiles_thumbnail_y'], 'default', 'value' => 0],
+            [['tiles_thumbnail_x', 'tiles_thumbnail_y'], 'filter', 'filter' => function ($value) {
+                return $value >= 0 ? $value : 0;
+            }],
             [['tiles_thumbnail_w'], 'default', 'value' => 363],
             [['tiles_thumbnail_h'], 'default', 'value' => 209],
             [['imageFile'], 'file', 'extensions' => ['jpg', 'png']],
