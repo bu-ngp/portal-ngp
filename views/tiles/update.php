@@ -14,63 +14,63 @@ use yii\bootstrap\Modal;
 
 $this->title = Yii::t('ngp/tiles', 'Update Tiles');
 ?>
-<div class="tiles-update content-container">
+    <div class="tiles-update content-container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="tiles-form">
+        <div class="tiles-form">
 
-        <?php $form = ActiveForm::begin(); ?>
+            <?php $form = ActiveForm::begin(); ?>
 
-        <?= Tabs::widget([
-            'items' => [
-                [
-                    'label' => Yii::t('ngp/tiles', 'Picture'),
-                    'content' => Panel::widget([
-                        'label' => Yii::t('ngp/tiles', 'Preview'),
-                        'content' => $this->render('_picture', ['form' => $form, 'modelForm' => $modelForm]),
-                    ]),
+            <?= Tabs::widget([
+                'items' => [
+                    [
+                        'label' => Yii::t('ngp/tiles', 'Picture'),
+                        'content' => Panel::widget([
+                            'label' => Yii::t('ngp/tiles', 'Preview'),
+                            'content' => $this->render('_picture', ['form' => $form, 'modelForm' => $modelForm]),
+                        ]),
+                    ],
+                    [
+                        'label' => Yii::t('ngp/tiles', 'Icon'),
+                        'content' => Panel::widget([
+                            'label' => Yii::t('ngp/tiles', 'Preview'),
+                            'content' => $this->render('_icon', ['form' => $form, 'modelForm' => $modelForm, 'operation' => 'update']),
+                        ]),
+                    ],
                 ],
-                [
-                    'label' => Yii::t('ngp/tiles', 'Icon'),
-                    'content' => Panel::widget([
-                        'label' => Yii::t('ngp/tiles', 'Preview'),
-                        'content' => $this->render('_icon', ['form' => $form, 'modelForm' => $modelForm]),
-                    ]),
-                ],
-            ],
-        ]) ?>
+            ]) ?>
 
-        <?= $form->field($modelForm, 'tiles_thumbnail_x')->hiddenInput()->label(false) ?>
-        <?= $form->field($modelForm, 'tiles_thumbnail_x2')->hiddenInput()->label(false) ?>
-        <?= $form->field($modelForm, 'tiles_thumbnail_y')->hiddenInput()->label(false) ?>
-        <?= $form->field($modelForm, 'tiles_thumbnail_y2')->hiddenInput()->label(false) ?>
-        <?= $form->field($modelForm, 'tiles_thumbnail_w')->hiddenInput()->label(false) ?>
-        <?= $form->field($modelForm, 'tiles_thumbnail_h')->hiddenInput()->label(false) ?>
+            <?= $form->field($modelForm, 'tiles_thumbnail_x')->hiddenInput()->label(false) ?>
+            <?= $form->field($modelForm, 'tiles_thumbnail_x2')->hiddenInput()->label(false) ?>
+            <?= $form->field($modelForm, 'tiles_thumbnail_y')->hiddenInput()->label(false) ?>
+            <?= $form->field($modelForm, 'tiles_thumbnail_y2')->hiddenInput()->label(false) ?>
+            <?= $form->field($modelForm, 'tiles_thumbnail_w')->hiddenInput()->label(false) ?>
+            <?= $form->field($modelForm, 'tiles_thumbnail_h')->hiddenInput()->label(false) ?>
 
-        <?= $form->field($modelForm, 'tiles_icon_color')->select2([
-            'data' => Tiles::items()['tiles_icon_color'],
-            'hideSearch' => true,
-            'wkkeep' => true,
-            // 'wkicon' => FA::_WINDOW_RESTORE,
-        ]) ?>
+            <?= $form->field($modelForm, 'tiles_icon_color')->select2([
+                'data' => Tiles::items()['tiles_icon_color'],
+                'hideSearch' => true,
+                'wkkeep' => true,
+                // 'wkicon' => FA::_WINDOW_RESTORE,
+            ]) ?>
 
-        <?= $form->field($modelForm, 'tiles_name')->textInput(['wkkeep' => true]) ?>
+            <?= $form->field($modelForm, 'tiles_name')->textInput(['wkkeep' => true]) ?>
 
-        <?= $form->field($modelForm, 'tiles_description')->textarea(['wkkeep' => true]) ?>
+            <?= $form->field($modelForm, 'tiles_description')->textarea(['wkkeep' => true]) ?>
 
-        <?= $form->field($modelForm, 'tiles_link')->textInput(['wkkeep' => true]) ?>
+            <?= $form->field($modelForm, 'tiles_link')->textInput(['wkkeep' => true]) ?>
 
-        <?= $form->field($modelForm, 'tiles_keywords')->textInput(['wkkeep' => true]) ?>
+            <?= $form->field($modelForm, 'tiles_keywords')->textInput(['wkkeep' => true]) ?>
 
-        <div class="form-group toolbox-form-group">
-            <?= Html::updateButton() ?>
+            <div class="form-group toolbox-form-group">
+                <?= Html::updateButton() ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+
         </div>
-
-        <?php ActiveForm::end(); ?>
-
     </div>
-</div>
 
 <?php Modal::begin([
     'id' => 'cropper-dialog',

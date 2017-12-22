@@ -31,10 +31,6 @@ class TilesForm extends Model
 
     public function __construct(Tiles $tiles = null, $config = [])
     {
-        if ($icon = Yii::$app->request->get('icon')) {
-            $this->tiles_icon = $icon;
-        }
-
         if ($tiles) {
             $this->tiles_name = $tiles->tiles_name;
             $this->tiles_description = $tiles->tiles_description;
@@ -45,6 +41,10 @@ class TilesForm extends Model
             $this->tiles_icon_color = $tiles->tiles_icon_color;
         } else {
             $this->tiles_icon_color = CardList::BLUE_STYLE;
+        }
+
+        if ($icon = Yii::$app->request->get('icon')) {
+            $this->tiles_icon = 'fa fa-' . $icon;
         }
 
         parent::__construct($config);

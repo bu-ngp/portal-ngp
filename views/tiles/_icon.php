@@ -6,6 +6,7 @@
  * Time: 11:19
  */
 /* @var $modelForm ngp\services\forms\TilesForm */
+/* @var $operation string */
 
 /* @var $form \common\widgets\ActiveForm\ActiveForm */
 
@@ -21,7 +22,7 @@ use yii\bootstrap\Html;
     </div>
     <div class="col-md-3 btn-group-vertical">
         <?= $form->field($modelForm, 'tiles_icon')->hiddenInput()->label(false) ?>
-        <?= Html::a(FA::icon(FA::_WINDOW_MAXIMIZE) . Yii::t('ngp/tiles', 'Choose Icon'), ['tiles/icons', 'redirectTo' => 'create'], [
+        <?= Html::a(FA::icon(FA::_WINDOW_MAXIMIZE) . Yii::t('ngp/tiles', 'Choose Icon'), ['tiles/icons', 'redirectTo' => $operation, 'id' => Yii::$app->request->get('id', '')], [
             'class' => 'btn pmd-btn-flat pmd-ripple-effect btn-primary wk-tiles-choose-icon-button',
         ]) ?>
     </div>

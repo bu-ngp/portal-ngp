@@ -25,7 +25,7 @@ $this->title = Yii::t('ngp/tiles', 'Choose Icon');
             <div class="col-md-12 wk-tiles-icons">
                 <?php
                 foreach ($icons as $icon) {
-                    echo '<div class="col-md-1"><a href="' . Url::to(['tiles/' . $redirectTo, 'icon' => $icon]) . '">' . FA::icon($icon) . '</a></div>';
+                    echo '<div class="col-md-1"><a href="' . Url::to(['tiles/' . $redirectTo, 'icon' => $icon, 'id' => Yii::$app->request->get('id', '')]) . '">' . FA::icon($icon) . '</a></div>';
                 }
                 ?>
             </div>

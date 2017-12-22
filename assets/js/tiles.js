@@ -34,7 +34,7 @@ $(document).ready(function () {
             $('ul.nav-tabs').find('a[href="#w1-tab1"]').tab('show');
         }
 
-        $('div.wk-tiles-preview-icon').find('i').attr('class', 'fa fa-' + $('#tilesform-tiles_icon').val());
+        $('div.wk-tiles-preview-icon').find('i').attr('class', $('#tilesform-tiles_icon').val());
     }
 
     // floating label textarea
