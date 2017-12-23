@@ -96,7 +96,6 @@ class IpContactController extends Controller
     public function actionIndex()
     {
         $searchModel = new IpContactSearch();
-        $a=$searchModel->attributeLabels();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
