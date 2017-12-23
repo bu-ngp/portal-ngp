@@ -14,7 +14,7 @@ $this->title = Yii::t('ngp/ip-contact', 'Ip Contact Groups');
 ?>
 <div class="ip-contact-groups-index content-container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= FA::icon(FA::_CUBES) . Html::encode($this->title) ?></h1>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -48,10 +48,6 @@ $this->title = Yii::t('ngp/ip-contact', 'Ip Contact Groups');
         'gridExcludeIdsFunc' => function (ActiveQuery $activeQuery, array $ids) {
             $activeQuery->andWhere(['not in', 'ip_contact_groups_id', $ids]);
         },
-        'panelHeading' => [
-            'icon' => FA::icon(FA::_PUZZLE_PIECE),
-            'title' => Yii::t('ngp/ip-contact', 'Ip Contact Groups'),
-        ],
     ]); ?>
 
 </div>

@@ -12,7 +12,7 @@ $this->title = Yii::t('ngp/ip-contact', 'Ip Contacts');
 ?>
 <div class="ip-contact-index content-container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= FA::icon(FA::_PHONE_SQUARE) . Html::encode($this->title) ?></h1>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,10 +29,6 @@ $this->title = Yii::t('ngp/ip-contact', 'Ip Contacts');
             'create' => 'ip-contact/create',
             'update' => 'ip-contact/update',
             'delete' => 'ip-contact/delete',
-        ],
-        'panelHeading' => [
-            'icon' => FA::icon(FA::_PHONE_SQUARE),
-            'title' => Yii::t('ngp/ip-contact', 'Ip Contacts'),
         ],
     ]); ?>
 

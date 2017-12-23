@@ -2,6 +2,7 @@
 
 use common\widgets\Html\Html;
 use common\widgets\ActiveForm\ActiveForm;
+use common\widgets\Panel\Panel;
 use ngp\services\models\IpContactGroups;
 use ngp\services\queries\IpContactGroupsQuery;
 use rmrevin\yii\fontawesome\FA;
@@ -13,25 +14,15 @@ $this->title = Yii::t('ngp/ip-contact', 'Update Ip Contact');
 ?>
 <div class="ip-contact-update content-container">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= FA::icon(FA::_PHONE_SQUARE) . Html::encode($this->title) ?></h1>
 
     <div class="ip-contact-form">
 
         <?php $form = ActiveForm::begin(); ?>
 
-        <?= $form->field($modelForm, 'ip_contact_name')->textInput(['maxlength' => true]) ?>
-
-        <?= $form->field($modelForm, 'ip_contact_phone')->textInput(['maxlength' => true]) ?>
-
-        <?= $form->field($modelForm, 'ip_contact_groups_id')->select2([
-            'activeRecordClass' => IpContactGroups::className(),
-            'queryCallback' => IpContactGroupsQuery::select(),
-            'ajaxConfig' => [
-                'searchAjaxCallback' => IpContactGroupsQuery::search(),
-            ],
-            'wkkeep' => true,
-            'wkicon' => FA::_PUZZLE_PIECE,
-            'selectionGridUrl' => ['ip-contact-groups/index'],
+        <?= Panel::widget([
+            'label' => '',
+            'content' => $this->render('_form', ['form' => $form, 'modelForm' => $modelForm]),
         ]) ?>
 
         <div class="form-group toolbox-form-group">
