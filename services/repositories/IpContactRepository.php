@@ -57,4 +57,13 @@ class IpContactRepository
             throw new \DomainException(Yii::t('domain/base', 'Deleting error.'));
         }
     }
+
+    public function contact($id)
+    {
+        return IpContact::find()
+            ->select(['ip_contact_name as Name', 'ip_contact_phone as Telephone'])
+            ->andWhere(['ip_contact_groups_id' => $id])
+            ->asArray()
+            ->all();
+    }
 }

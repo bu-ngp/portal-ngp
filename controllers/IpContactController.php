@@ -3,7 +3,9 @@
 namespace ngp\controllers;
 
 use ngp\helpers\RbacHelper;
+use ngp\services\models\IpContactGroups;
 use ngp\services\models\search\IpContactGroupsSearch;
+use ngp\services\services\IpContactGroupsService;
 use Yii;
 use ngp\services\models\IpContact;
 use ngp\services\models\search\IpContactSearch;
@@ -18,6 +20,7 @@ use yii\filters\ContentNegotiator;
 use yii\filters\AccessControl;
 use yii\web\Response;
 use common\widgets\Breadcrumbs\Breadcrumbs;
+use yii\web\XmlResponseFormatter;
 
 /**
  * IpContactController implements the CRUD actions for IpContact model.
@@ -25,13 +28,19 @@ use common\widgets\Breadcrumbs\Breadcrumbs;
 class IpContactController extends Controller
 {
     /**
-     * @var $service IpContactService
+     * @var $ipContactService IpContactService
      */
-    private $service;
+    private $ipContactService;
+    /**
+     * @var $contactGroupsService IpContactGroupsService
+     */
+    private $contactGroupsService;
 
-    public function __construct($id, $module, IpContactService $service, $config = [])
+    public function __construct($id, $module, IpContactService $ipContactService, IpContactGroupsService $contactGroupsService, $config = [])
     {
-        $this->service = new ProxyService($service);
+        $this->ipContactService = new ProxyService($ipContactService);
+        $this->contactGroupsService = new ProxyService($contactGroupsService);
+
         parent::__construct($id, $module, $config = []);
     }
 
@@ -49,6 +58,10 @@ class IpContactController extends Controller
                         'actions' => ['index', 'create', 'update', 'delete'],
                         'roles' => [RbacHelper::IP_CONTACT_EDIT],
                     ],
+                    [
+                        'allow' => true,
+                        'actions' => ['menu', 'contact'],
+                    ],
                 ],
             ],
             [
@@ -62,12 +75,28 @@ class IpContactController extends Controller
                     'application/json' => Response::FORMAT_JSON,
                 ],
             ],
+            [
+                'class' => ContentNegotiator::className(),
+                'only' => ['menu'],
+                'formats' => [
+                    'application/xml' => Response::FORMAT_XML,
+                ],
+
+            ],
+            [
+                'class' => ContentNegotiator::className(),
+                'only' => ['contact'],
+                'formats' => [
+                    'application/xml' => Response::FORMAT_XML,
+                ],
+            ],
         ];
     }
 
     public function actionIndex()
     {
         $searchModel = new IpContactSearch();
+        $a=$searchModel->attributeLabels();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -82,7 +111,7 @@ class IpContactController extends Controller
 
         if ($form->load(Yii::$app->request->post())
             && $form->validate()
-            && $this->service->create($form)
+            && $this->ipContactService->create($form)
         ) {
             Yii::$app->session->setFlash('success', Yii::t('common', 'Record is saved.'));
             return $this->redirect(Breadcrumbs::previousUrl());
@@ -95,12 +124,12 @@ class IpContactController extends Controller
 
     public function actionUpdate($id)
     {
-        $ipContact = $this->service->find($id);
+        $ipContact = $this->ipContactService->find($id);
         $form = new IpContactForm($ipContact);
 
         if ($form->load(Yii::$app->request->post())
             && $form->validate()
-            && $this->service->update($ipContact->primaryKey, $form)
+            && $this->ipContactService->update($ipContact->primaryKey, $form)
         ) {
             Yii::$app->session->setFlash('success', Yii::t('common', 'Record is saved.'));
             return $this->redirect(Breadcrumbs::previousUrl());
@@ -114,11 +143,33 @@ class IpContactController extends Controller
     public function actionDelete($id)
     {
         try {
-            $this->service->delete($id);
+            $this->ipContactService->delete($id);
         } catch (\Exception $e) {
             return AjaxResponse::init(AjaxResponse::ERROR, $e->getMessage());
         }
 
         return AjaxResponse::init(AjaxResponse::SUCCESS);
+    }
+
+    public function actionMenu()
+    {
+        Yii::$app->response->formatters[Response::FORMAT_XML] = [
+            'class' => 'yii\web\XmlResponseFormatter',
+            'rootTag' => 'YealinkIPPhoneMenu',
+            'itemTag' => 'MenuItem',
+        ];
+
+        return $this->contactGroupsService->menu();
+    }
+
+    public function actionContact($id)
+    {
+        Yii::$app->response->formatters[Response::FORMAT_XML] = [
+            'class' => 'yii\web\XmlResponseFormatter',
+            'rootTag' => 'YealinkIPPhoneDirectory',
+            'itemTag' => 'DirectoryEntry',
+        ];
+
+        return $this->ipContactService->contact($id);
     }
 }

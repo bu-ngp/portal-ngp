@@ -16,6 +16,12 @@ return [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [
+                [
+                    'pattern' => 'ip-contact/menu/<id:\d+>',
+                    'route' => 'ip-contact/contact',
+                ],
+            ],
         ],
         'urlManagerAdmin' => [
             'baseUrl' => 'manager',

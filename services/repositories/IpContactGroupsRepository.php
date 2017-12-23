@@ -6,6 +6,7 @@ use ngp\services\models\IpContactGroups;
 use domain\exceptions\ServiceErrorsException;
 use RuntimeException;
 use Yii;
+use yii\helpers\Url;
 
 class IpContactGroupsRepository
 {
@@ -56,5 +57,13 @@ class IpContactGroupsRepository
         if (!$ipContactGroups->delete()) {
             throw new \DomainException(Yii::t('domain/base', 'Deleting error.'));
         }
+    }
+
+    public function menu()
+    {
+        return IpContactGroups::find()
+            ->select(['ip_contact_groups_name as Name', "CONCAT('" . Url::to(['ip-contact/menu'], true) . "/', ip_contact_groups_id) as URL"])
+            ->asArray()
+            ->all();
     }
 }

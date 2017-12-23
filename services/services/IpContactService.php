@@ -49,4 +49,9 @@ class IpContactService extends Service
         $ipContact = $this->ipContacts->find($id);
         $this->ipContacts->delete($ipContact);
     }
+
+    public function contact($id)
+    {
+        return $this->ipContacts->contact($id);
+    }
 }

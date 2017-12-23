@@ -49,4 +49,8 @@ class IpContactGroupsService extends Service
         $ipContactGroups = $this->ipContactGroups->find($id);
         $this->ipContactGroups->delete($ipContactGroups);
     }
+
+    public function menu() {
+        return $this->ipContactGroups->menu();
+    }
 }
