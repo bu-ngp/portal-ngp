@@ -56,13 +56,13 @@ $this->title = Yii::t('ngp/tiles', 'Create Tiles');
                 // 'wkicon' => FA::_WINDOW_RESTORE,
             ]) ?>
 
-            <?= $form->field($modelForm, 'tiles_name')->textInput(['wkkeep' => true]) ?>
+            <?= $form->field($modelForm, 'tiles_name')->textInput(['wkkeep' => true, 'maxlength' => true]) ?>
 
-            <?= $form->field($modelForm, 'tiles_description')->textarea(['wkkeep' => true]) ?>
+            <?= $form->field($modelForm, 'tiles_description')->textarea(['wkkeep' => true, 'maxlength' => true]) ?>
 
-            <?= $form->field($modelForm, 'tiles_link')->textInput(['wkkeep' => true]) ?>
+            <?= $form->field($modelForm, 'tiles_link')->textInput(['wkkeep' => true, 'maxlength' => true]) ?>
 
-            <?= $form->field($modelForm, 'tiles_keywords')->textInput(['wkkeep' => true]) ?>
+            <?= $form->field($modelForm, 'tiles_keywords')->textInput(['wkkeep' => true, 'maxlength' => true]) ?>
 
             <div class="form-group toolbox-form-group">
                 <?= Html::createButton() ?>

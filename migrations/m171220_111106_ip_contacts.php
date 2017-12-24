@@ -47,7 +47,7 @@ class m171220_111106_ip_contacts extends Migration
                 'wkportal-backend|site/index',
                 'Контакты IP телефонии',
                 'Добавление/Редактирование/Удаление контактов для IP телефонии',
-                'wk-yellow-style',
+                'wk-blue-style',
                 'FrontendUrlManager[ip-contact]',
                 'fa fa-phone-square',
                 RbacHelper::IP_CONTACT_OPERATOR,

@@ -21,7 +21,7 @@ class m171031_113027_cardlist_data extends Migration
                 'wkportal-backend|site/index',
                 'Плитки на главной странице',
                 'Добавление/Редактирование/Удаление плиток',
-                'wk-yellow-style',
+                'wk-blue-style',
                 'FrontendUrlManager[tiles]',
                 'fa fa-table',
                 RbacHelper::TILES_EDIT,
