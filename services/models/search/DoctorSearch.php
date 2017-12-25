@@ -18,6 +18,7 @@ class DoctorSearch extends SearchModel
     {
         return [
             'person_id',
+            'profile.profile_inn',
             'person_fullname',
             'employee.dolzh.dolzh_name',
             'employee.podraz.podraz_name',
@@ -32,6 +33,7 @@ class DoctorSearch extends SearchModel
     public function beforeLoad(ActiveQuery $query, ActiveDataProvider $dataProvider, $params)
     {
         $query->joinWith([
+            'profile',
             'employee.dolzh',
             'employee.podraz',
         ])->andWhere([

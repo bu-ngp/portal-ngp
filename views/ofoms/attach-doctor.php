@@ -37,7 +37,7 @@ $this->title = Yii::t('ngp/ofoms', 'Doctors');
             ],
         ],
         'gridExcludeIdsFunc' => function (ActiveQuery $activeQuery, array $ids) {
-            $activeQuery->andWhere(['not in', '{{%person}}.person_id', $ids]);
+            $activeQuery->andWhere(['not in', 'profile.profile_inn', $ids]);
         }
     ]);
     ?>
