@@ -33,7 +33,7 @@ $this->title = $modelForm->fam . ' ' . $modelForm->im . ' ' . $modelForm->ot;
             ],
             'wkkeep' => true,
             'wkicon' => FA::_STETHOSCOPE,
-            'selectionGridUrl' => Yii::$app->get('urlManagerAdmin')->createUrl(['users/index']),
+            'selectionGridUrl' => ['ofoms/attach-doctor'],
         ]) ?>
 
         <div class="form-group toolbox-form-group">

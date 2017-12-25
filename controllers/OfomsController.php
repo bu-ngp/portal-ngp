@@ -14,6 +14,7 @@ use domain\services\ProxyService;
 use ngp\helpers\RbacHelper;
 use ngp\services\forms\OfomsAttachForm;
 use ngp\services\forms\OfomsAttachListForm;
+use ngp\services\models\search\DoctorSearch;
 use ngp\services\models\search\OfomsSearch;
 use ngp\services\services\OfomsService;
 use Yii;
@@ -53,7 +54,7 @@ class OfomsController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['attach'],
+                        'actions' => ['attach', 'attach-doctor'],
                         'roles' => [RbacHelper::OFOMS_PRIK],
                     ],
                     [
@@ -119,6 +120,17 @@ class OfomsController extends Controller
 
         return $this->render('attach-list', [
             'modelForm' => $form,
+        ]);
+    }
+
+    public function actionAttachDoctor()
+    {
+        $searchModel = new DoctorSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('attach-doctor', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 }

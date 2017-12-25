@@ -9,9 +9,17 @@ use rmrevin\yii\fontawesome\FA;
 /* @var $modelForm ngp\services\forms\IpContactForm */
 ?>
 
-<?= $form->field($modelForm, 'ip_contact_name')->textInput(['wkkeep' => true, 'maxlength' => true]) ?>
 
-<?= $form->field($modelForm, 'ip_contact_phone')->textInput(['wkkeep' => true, 'maxlength' => true]) ?>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <?= $form->field($modelForm, 'ip_contact_name')->textInput(['wkkeep' => true, 'maxlength' => true, 'wkicon' => FA::_GROUP])->hint('Максимум 25 знаков') ?>
+            </div>
+            <div class="col-xs-6">
+                <?= $form->field($modelForm, 'ip_contact_phone', ['enableClientValidation' => false])->maskedInput(['wkkeep' => true, 'mask' => '8-(9999)-99-99-99', 'wkicon' => FA::_PHONE]) ?>
+            </div>
+        </div>
+    </div>
 
 <?= $form->field($modelForm, 'ip_contact_groups_id')->select2([
     'activeRecordClass' => IpContactGroups::className(),

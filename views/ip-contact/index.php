@@ -22,7 +22,14 @@ $this->title = Yii::t('ngp/ip-contact', 'Ip Contacts');
         ],
         'columns' => [
             'ip_contact_name',
-            'ip_contact_phone',
+            [
+                'attribute' => 'ip_contact_phone',
+                'value' => function ($model) {
+                    return preg_match('/\d(\d{4})(\d{2})(\d{2})(\d{2})/', $model->ip_contact_phone, $matches)
+                        ? "8-({$matches[1]})-{$matches[2]}-{$matches[3]}-{$matches[4]}"
+                        : $model->ip_contact_phone;
+                }
+            ],
             'ipContactGroups.ip_contact_groups_name',
         ],
         'crudSettings' => [

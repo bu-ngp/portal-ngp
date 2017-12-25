@@ -4,10 +4,8 @@ namespace ngp\controllers;
 
 use ngp\helpers\RbacHelper;
 use Yii;
-use ngp\services\models\IpContactGroups;
 use ngp\services\models\search\IpContactGroupsSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use common\widgets\GridView\services\AjaxResponse;
 use ngp\services\forms\IpContactGroupsForm;
 use domain\services\AjaxFilter;

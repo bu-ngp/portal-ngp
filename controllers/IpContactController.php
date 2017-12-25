@@ -3,14 +3,10 @@
 namespace ngp\controllers;
 
 use ngp\helpers\RbacHelper;
-use ngp\services\models\IpContactGroups;
-use ngp\services\models\search\IpContactGroupsSearch;
 use ngp\services\services\IpContactGroupsService;
 use Yii;
-use ngp\services\models\IpContact;
 use ngp\services\models\search\IpContactSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use common\widgets\GridView\services\AjaxResponse;
 use ngp\services\forms\IpContactForm;
 use domain\services\AjaxFilter;
@@ -20,7 +16,6 @@ use yii\filters\ContentNegotiator;
 use yii\filters\AccessControl;
 use yii\web\Response;
 use common\widgets\Breadcrumbs\Breadcrumbs;
-use yii\web\XmlResponseFormatter;
 
 /**
  * IpContactController implements the CRUD actions for IpContact model.

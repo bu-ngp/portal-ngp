@@ -41,4 +41,5 @@ return [
     'Type to search input and press Enter button' => 'Введите строку поиска и нажмите клавишу Enter на клавиатуре',
     'Upload List' => 'Загрузить список пациентов',
     'Vrach' => 'Врач',
+    'Doctors' => 'Врачи',
 ];

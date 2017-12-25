@@ -15,7 +15,7 @@ class IpContactGroupRules
     {
         return [
             [['ip_contact_groups_name'], 'required'],
-            [['ip_contact_groups_name'], 'string', 'max' => 255],
+            [['ip_contact_groups_name'], 'string', 'max' => 25],
         ];
     }
 }
