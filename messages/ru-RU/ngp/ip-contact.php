@@ -28,4 +28,5 @@ return [
     'Ip Contact Name' => 'Имя',
     'Ip Contact Phone' => 'Телефон',
     'Ip Contacts' => 'Контакты IP телефонии',
+    'No more 25 characters' => 'Не более 25 знаков',
 ];
