@@ -13,10 +13,20 @@ use rmrevin\yii\fontawesome\FA;
     <div class="form-group">
         <div class="row">
             <div class="col-xs-6">
-                <?= $form->field($modelForm, 'ip_contact_name')->textInput(['wkkeep' => true, 'maxlength' => true, 'wkicon' => FA::_GROUP])->hint(Yii::t('ngp/ip-contact','No more 25 characters')) ?>
+                <?= $form->field($modelForm, 'ip_contact_name')->textInput(['wkkeep' => true, 'maxlength' => true, 'wkicon' => FA::_GROUP])->hint(Yii::t('ngp/ip-contact', 'No more 25 characters')) ?>
             </div>
             <div class="col-xs-6">
                 <?= $form->field($modelForm, 'ip_contact_phone', ['enableClientValidation' => false])->maskedInput(['wkkeep' => true, 'mask' => '8-(9999)-99-99-99', 'wkicon' => FA::_PHONE]) ?>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <?= $form->field($modelForm, 'ip_contact_phone2', ['enableClientValidation' => false])->maskedInput(['wkkeep' => true, 'mask' => '8-(9999)-99-99-99', 'wkicon' => FA::_PHONE_SQUARE]) ?>
+            </div>
+            <div class="col-xs-6">
+                <?= $form->field($modelForm, 'ip_contact_phone3', ['enableClientValidation' => false])->maskedInput(['wkkeep' => true, 'mask' => '8-(9999)-99-99-99', 'wkicon' => FA::_PHONE_SQUARE]) ?>
             </div>
         </div>
     </div>

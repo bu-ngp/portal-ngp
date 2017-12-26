@@ -19,6 +19,8 @@ class IpContactSearch extends SearchModel
         return [
             'ip_contact_name',
             'ip_contact_phone',
+            'ip_contact_phone2',
+            'ip_contact_phone3',
             'ipContactGroups.ip_contact_groups_name',
         ];
     }
@@ -38,7 +40,7 @@ class IpContactSearch extends SearchModel
     public function filter()
     {
         return [
-            [['ip_contact_name', 'ip_contact_phone', 'ipContactGroups.ip_contact_groups_name'], SearchModel::CONTAIN],
+            [['ip_contact_name', 'ip_contact_phone', 'ip_contact_phone2', 'ip_contact_phone3', 'ipContactGroups.ip_contact_groups_name'], SearchModel::CONTAIN],
         ];
     }
 }

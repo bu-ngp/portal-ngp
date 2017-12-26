@@ -17,16 +17,19 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Ip Contact Phone2' => 'Дополнительный телефон №2',
+    'Ip Contact Phone3' => 'Дополнительный телефон №3',
+    'The combination of Ip Contact Name and Ip Contact Phone has already been taken.' => 'Контакт с таким именем и телефоном уже существует.',
+    'Create Ip Contact' => 'Создать контакт',
     'Create Ip Contact Groups' => 'Создать группу контактов',
     'Ip Contact Groups' => 'Группы контактов',
-    'Ip Contact ID' => 'Контакт',
-    'Update Ip Contact' => 'Обновить контакт',
-    'Update Ip Contact Group' => 'Обновить группу контактов',
-    'Create Ip Contact' => 'Создать контакт',
     'Ip Contact Groups ID' => 'Группа',
     'Ip Contact Groups Name' => 'Группа',
+    'Ip Contact ID' => 'Контакт',
     'Ip Contact Name' => 'Имя',
     'Ip Contact Phone' => 'Телефон',
     'Ip Contacts' => 'Контакты IP телефонии',
     'No more 25 characters' => 'Не более 25 знаков',
+    'Update Ip Contact' => 'Обновить контакт',
+    'Update Ip Contact Group' => 'Обновить группу контактов',
 ];

@@ -10,6 +10,8 @@ class IpContactForm extends Model
 {
     public $ip_contact_name;
     public $ip_contact_phone;
+    public $ip_contact_phone2;
+    public $ip_contact_phone3;
     public $ip_contact_groups_id;
 
     public function __construct(IpContact $ipContact = null, $config = [])
@@ -17,6 +19,8 @@ class IpContactForm extends Model
         if ($ipContact) {
             $this->ip_contact_name = $ipContact->ip_contact_name;
             $this->ip_contact_phone = $ipContact->ip_contact_phone;
+            $this->ip_contact_phone2 = $ipContact->ip_contact_phone2;
+            $this->ip_contact_phone3 = $ipContact->ip_contact_phone3;
             $this->ip_contact_groups_id = $ipContact->ip_contact_groups_id;
         }
 

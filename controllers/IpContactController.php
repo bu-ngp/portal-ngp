@@ -72,18 +72,11 @@ class IpContactController extends Controller
             ],
             [
                 'class' => ContentNegotiator::className(),
-                'only' => ['menu'],
+                'only' => ['menu', 'contact'],
                 'formats' => [
                     'application/xml' => Response::FORMAT_XML,
                 ],
 
-            ],
-            [
-                'class' => ContentNegotiator::className(),
-                'only' => ['contact'],
-                'formats' => [
-                    'application/xml' => Response::FORMAT_XML,
-                ],
             ],
         ];
     }
@@ -162,6 +155,7 @@ class IpContactController extends Controller
             'class' => 'yii\web\XmlResponseFormatter',
             'rootTag' => 'YealinkIPPhoneDirectory',
             'itemTag' => 'DirectoryEntry',
+            'useObjectTags' => false,
         ];
 
         return $this->ipContactService->contact($id);
