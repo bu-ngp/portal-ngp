@@ -19,7 +19,7 @@
 return [
     'Ip Contact Phone2' => 'Дополнительный телефон №2',
     'Ip Contact Phone3' => 'Дополнительный телефон №3',
-    'The combination of Ip Contact Name and Ip Contact Phone has already been taken.' => 'Контакт с таким именем и телефоном уже существует.',
+    'The combination of Ip Contact Name and Ip Contact Phone and Ip Contact Group has already been taken.' => 'Контакт с таким именем, телефоном уже существует в этой группе.',
     'Create Ip Contact' => 'Создать контакт',
     'Create Ip Contact Groups' => 'Создать группу контактов',
     'Ip Contact Groups' => 'Группы контактов',
@@ -29,7 +29,7 @@ return [
     'Ip Contact Name' => 'Имя',
     'Ip Contact Phone' => 'Телефон',
     'Ip Contacts' => 'Контакты IP телефонии',
-    'No more 25 characters' => 'Не более 25 знаков',
+    'No more 30 characters' => 'Не более 30 знаков',
     'Update Ip Contact' => 'Обновить контакт',
     'Update Ip Contact Group' => 'Обновить группу контактов',
 ];

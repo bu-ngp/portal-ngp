@@ -35,7 +35,7 @@ class IpContact extends \yii\db\ActiveRecord
     public function rules()
     {
         return ArrayHelper::merge(IpContactRules::client(), [
-            [['ip_contact_name', 'ip_contact_phone'], 'unique', 'targetAttribute' => ['ip_contact_name', 'ip_contact_phone'], 'message' => Yii::t('ngp/ip-contact', 'The combination of Ip Contact Name and Ip Contact Phone has already been taken.')],
+            [['ip_contact_name'], 'unique', 'targetAttribute' => ['ip_contact_name', 'ip_contact_phone', 'ip_contact_groups_id'], 'message' => Yii::t('ngp/ip-contact', 'The combination of Ip Contact Name and Ip Contact Phone and Ip Contact Group has already been taken.')],
             [['ip_contact_groups_id'], 'exist', 'skipOnError' => true, 'targetClass' => IpContactGroups::className(), 'targetAttribute' => ['ip_contact_groups_id' => 'ip_contact_groups_id']],
         ]);
     }
