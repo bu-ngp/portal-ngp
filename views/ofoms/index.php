@@ -1,6 +1,7 @@
 <?php
 
 use common\widgets\Breadcrumbs\Breadcrumbs;
+use common\widgets\HeaderPanel\HeaderPanel;
 use common\widgets\Panel\Panel;
 use ngp\assets\OfomsAsset;
 use ngp\helpers\RbacHelper;
@@ -17,8 +18,7 @@ Breadcrumbs::root();
 $this->title = Yii::t('ngp/ofoms', 'Ofoms Portal');
 ?>
     <div class="ofoms-index content-container">
-
-        <h1><?= Html::encode($this->title) ?></h1>
+        <?= HeaderPanel::widget(['icon' => FA::_MALE, 'title' => Html::encode($this->title)]) ?>
 
         <?= Panel::widget([
             'label' => Yii::t('ngp/ofoms', 'Search'),
@@ -130,7 +130,6 @@ $this->title = Yii::t('ngp/ofoms', 'Ofoms Portal');
                     Html::errorSummary($searchModel, ['class' => 'wk-ofoms-errors']),
                 ],
                 'panelHeading' => [
-                    'icon' => FA::icon(FA::_MALE),
                     'title' => Yii::t('ngp/ofoms', 'Results'),
                 ],
             ]) ?>

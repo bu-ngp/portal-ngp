@@ -7,6 +7,7 @@
  */
 
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use ngp\assets\TilesAsset;
 use rmrevin\yii\fontawesome\FA;
 use yii\bootstrap\Html;
@@ -18,8 +19,7 @@ use yii\helpers\Url;
 $this->title = Yii::t('ngp/tiles', 'Choose Icon');
 ?>
     <div class="tiles-icons content-container">
-
-        <h1><?= Html::encode($this->title) ?></h1>
+        <?= HeaderPanel::widget(['title' => Html::encode($this->title)]) ?>
 
         <div class="row">
             <div class="col-md-12 wk-tiles-icons">

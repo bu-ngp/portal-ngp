@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use common\widgets\Html\Html;
 use ngp\assets\OfomsAsset;
 use common\widgets\ActiveForm\ActiveForm;
@@ -10,8 +11,7 @@ use common\widgets\ActiveForm\ActiveForm;
 $this->title = Yii::t('ngp/ofoms', 'Attach with list');
 ?>
     <div class="ofoms-attach-list-update content-container">
-
-        <h1><?= Html::encode($this->title) ?></h1>
+        <?= HeaderPanel::widget(['title' => Html::encode($this->title)]) ?>
 
         <div class="ofoms-attach-list-form">
             <?php $form = ActiveForm::begin(['id' => 'test', 'options' => ['enctype' => 'multipart/form-data']]); ?>

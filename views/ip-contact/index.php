@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use yii\helpers\Html;
 use rmrevin\yii\fontawesome\FA;
 use common\widgets\GridView\GridView;
@@ -11,8 +12,7 @@ use common\widgets\GridView\GridView;
 $this->title = Yii::t('ngp/ip-contact', 'Ip Contacts');
 ?>
 <div class="ip-contact-index content-container">
-
-    <h1><?= FA::icon(FA::_PHONE_SQUARE) . Html::encode($this->title) ?></h1>
+    <?= HeaderPanel::widget(['icon' => FA::_PHONE_SQUARE, 'title' => Html::encode($this->title)]) ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

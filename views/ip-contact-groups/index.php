@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use ngp\helpers\RbacHelper;
 use yii\db\ActiveQuery;
 use yii\helpers\Html;
@@ -13,8 +14,7 @@ use common\widgets\GridView\GridView;
 $this->title = Yii::t('ngp/ip-contact', 'Ip Contact Groups');
 ?>
 <div class="ip-contact-groups-index content-container">
-
-    <h1><?= FA::icon(FA::_CUBES) . Html::encode($this->title) ?></h1>
+    <?= HeaderPanel::widget(['icon' => FA::_CUBES, 'title' => Html::encode($this->title)]) ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

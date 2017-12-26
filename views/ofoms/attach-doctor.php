@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use domain\models\base\Person;
 use common\widgets\GridView\GridView;
 use console\helpers\RbacHelper;
@@ -15,8 +16,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('ngp/ofoms', 'Doctors');
 ?>
 <div class="users-index content-container">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+    <?= HeaderPanel::widget(['icon' => FA::_STETHOSCOPE, 'title' => Html::encode($this->title)]) ?>
 
     <?=
     GridView::widget([

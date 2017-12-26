@@ -2,6 +2,7 @@
 
 use common\widgets\Breadcrumbs\Breadcrumbs;
 use common\widgets\CardList\CardList;
+use common\widgets\HeaderPanel\HeaderPanel;
 use ngp\assets\TilesAsset;
 use yii\bootstrap\Html;
 use rmrevin\yii\fontawesome\FA;
@@ -15,8 +16,7 @@ Breadcrumbs::root();
 $this->title = Yii::t('ngp/tiles', 'Tiles');
 ?>
 <div class="tiles-index content-container">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+    <?= HeaderPanel::widget(['icon' => FA::_BARS, 'title' => Html::encode($this->title)]) ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -81,10 +81,6 @@ $this->title = Yii::t('ngp/tiles', 'Tiles');
             'create' => 'tiles/create',
             'update' => 'tiles/update',
             'delete' => 'tiles/delete',
-        ],
-        'panelHeading' => [
-            'icon' => FA::icon(FA::_BARS),
-            'title' => Yii::t('ngp/tiles', 'Tiles'),
         ],
     ]); ?>
 

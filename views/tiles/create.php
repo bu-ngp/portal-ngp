@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use common\widgets\Html\Html;
 use common\widgets\Panel\Panel;
 use common\widgets\Tabs\Tabs;
@@ -16,8 +17,7 @@ use budyaga\cropper\Widget;
 $this->title = Yii::t('ngp/tiles', 'Create Tiles');
 ?>
     <div class="tiles-create content-container">
-
-        <h1><?= Html::encode($this->title) ?></h1>
+        <?= HeaderPanel::widget(['title' => Html::encode($this->title)]) ?>
 
         <div class="tiles-form">
 

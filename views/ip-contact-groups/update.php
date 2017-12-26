@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use common\widgets\Html\Html;
 use common\widgets\ActiveForm\ActiveForm;
 use common\widgets\Panel\Panel;
@@ -11,8 +12,7 @@ use rmrevin\yii\fontawesome\FA;
 $this->title = Yii::t('ngp/ip-contact', 'Update Ip Contact Group');
 ?>
 <div class="ip-contact-groups-update content-container">
-
-    <h1><?= FA::icon(FA::_CUBES) . Html::encode($this->title) ?></h1>
+    <?= HeaderPanel::widget(['icon' => FA::_CUBES, 'title' => Html::encode($this->title)]) ?>
 
     <div class="ip-contact-groups-form">
 

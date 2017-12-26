@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use common\widgets\Html\Html;
 use common\widgets\Panel\Panel;
 use common\widgets\Tabs\Tabs;
@@ -15,8 +16,7 @@ use yii\bootstrap\Modal;
 $this->title = Yii::t('ngp/tiles', 'Update Tiles');
 ?>
     <div class="tiles-update content-container">
-
-        <h1><?= Html::encode($this->title) ?></h1>
+        <?= HeaderPanel::widget(['title' => Html::encode($this->title)]) ?>
 
         <div class="tiles-form">
 

@@ -1,5 +1,6 @@
 <?php
 
+use common\widgets\HeaderPanel\HeaderPanel;
 use common\widgets\Html\Html;
 use domain\models\base\Person;
 use ngp\services\queries\VrachQuery;
@@ -12,8 +13,7 @@ use common\widgets\ActiveForm\ActiveForm;
 $this->title = $modelForm->fam . ' ' . $modelForm->im . ' ' . $modelForm->ot;
 ?>
 <div class="ofoms-attach content-container">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+    <?= HeaderPanel::widget(['title' => Html::encode($this->title)]) ?>
 
     <div class="ofoms-attach-form">
         <?php $form = ActiveForm::begin(); ?>
