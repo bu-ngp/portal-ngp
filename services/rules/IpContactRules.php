@@ -16,7 +16,7 @@ class IpContactRules
         return [
             [['ip_contact_name', 'ip_contact_phone', 'ip_contact_groups_id'], 'required'],
             [['ip_contact_groups_id'], 'integer'],
-            [['ip_contact_name'], 'string', 'max' => 25],
+            [['ip_contact_name'], 'string', 'max' => 30],
             [['ip_contact_phone', 'ip_contact_phone2', 'ip_contact_phone3'], 'filter', 'filter' => function ($value) {
                 return preg_replace('/[-\(\)_]/', '', $value);
             }],
