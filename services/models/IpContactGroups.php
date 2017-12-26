@@ -22,7 +22,7 @@ class IpContactGroups extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'wk_ip_contact_groups';
+        return '{{%ip_contact_groups}}';
     }
 
     /**
