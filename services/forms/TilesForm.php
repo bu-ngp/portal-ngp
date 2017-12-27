@@ -20,6 +20,7 @@ class TilesForm extends Model
     public $tiles_icon;
     public $tiles_icon_color;
 
+    public $tiles_preview_type;
     public $tiles_thumbnail_x;
     public $tiles_thumbnail_x2;
     public $tiles_thumbnail_y;
@@ -39,12 +40,15 @@ class TilesForm extends Model
             $this->tiles_thumbnail = $tiles->tiles_thumbnail;
             $this->tiles_icon = $tiles->tiles_icon;
             $this->tiles_icon_color = $tiles->tiles_icon_color;
+            $this->tiles_preview_type = $tiles->tiles_icon ? Tiles::PREVIEW_ICON : Tiles::PREVIEW_IMAGE;
         } else {
+            $this->tiles_preview_type = Tiles::PREVIEW_IMAGE;
             $this->tiles_icon_color = CardList::BLUE_STYLE;
         }
 
         if ($icon = Yii::$app->request->get('icon')) {
             $this->tiles_icon = 'fa fa-' . $icon;
+            $this->tiles_preview_type = Tiles::PREVIEW_ICON;
         }
 
         parent::__construct($config);
@@ -53,7 +57,7 @@ class TilesForm extends Model
     public function rules()
     {
         return array_merge(TilesRules::client(), [
-            [['tiles_thumbnail_x', 'tiles_thumbnail_x2', 'tiles_thumbnail_y', 'tiles_thumbnail_y2', 'tiles_thumbnail_w', 'tiles_thumbnail_h'], 'safe'],
+            [['tiles_preview_type', 'tiles_thumbnail_x', 'tiles_thumbnail_x2', 'tiles_thumbnail_y', 'tiles_thumbnail_y2', 'tiles_thumbnail_w', 'tiles_thumbnail_h'], 'safe'],
             [['tiles_thumbnail_x', 'tiles_thumbnail_y'], 'default', 'value' => 0],
             [['tiles_thumbnail_x', 'tiles_thumbnail_y'], 'filter', 'filter' => function ($value) {
                 return $value >= 0 ? $value : 0;

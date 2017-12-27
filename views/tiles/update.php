@@ -23,6 +23,7 @@ $this->title = Yii::t('ngp/tiles', 'Update Tiles');
             <?php $form = ActiveForm::begin(); ?>
 
             <?= Tabs::widget([
+                'id' => 'tiles_preview_tabs',
                 'items' => [
                     [
                         'label' => Yii::t('ngp/tiles', 'Picture'),
@@ -41,6 +42,7 @@ $this->title = Yii::t('ngp/tiles', 'Update Tiles');
                 ],
             ]) ?>
 
+            <?= $form->field($modelForm, 'tiles_preview_type')->hiddenInput()->label(false) ?>
             <?= $form->field($modelForm, 'tiles_thumbnail_x')->hiddenInput()->label(false) ?>
             <?= $form->field($modelForm, 'tiles_thumbnail_x2')->hiddenInput()->label(false) ?>
             <?= $form->field($modelForm, 'tiles_thumbnail_y')->hiddenInput()->label(false) ?>

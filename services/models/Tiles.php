@@ -30,6 +30,9 @@ use ngp\services\forms\TilesForm;
  */
 class Tiles extends \yii\db\ActiveRecord
 {
+    const PREVIEW_IMAGE = 'image';
+    const PREVIEW_ICON = 'icon';
+
     /**
      * @inheritdoc
      */
@@ -82,8 +85,8 @@ class Tiles extends \yii\db\ActiveRecord
             'tiles_name' => $form->tiles_name,
             'tiles_description' => $form->tiles_description,
             'tiles_link' => $form->tiles_link,
-            'tiles_thumbnail' => $form->tiles_thumbnail,
-            'tiles_icon' => $form->tiles_icon,
+            'tiles_thumbnail' => $form->tiles_preview_type === Tiles::PREVIEW_IMAGE ? $form->tiles_thumbnail : null,
+            'tiles_icon' => $form->tiles_preview_type === Tiles::PREVIEW_ICON ? $form->tiles_icon : null,
             'tiles_icon_color' => $form->tiles_icon_color,
             'tiles_keywords' => $form->tiles_keywords,
         ]);
@@ -94,8 +97,8 @@ class Tiles extends \yii\db\ActiveRecord
         $this->tiles_name = $form->tiles_name;
         $this->tiles_description = $form->tiles_description;
         $this->tiles_link = $form->tiles_link;
-        $this->tiles_thumbnail = $form->tiles_thumbnail;
-        $this->tiles_icon = $form->tiles_icon;
+        $this->tiles_thumbnail = $form->tiles_preview_type === self::PREVIEW_IMAGE ? $form->tiles_thumbnail : null;
+        $this->tiles_icon = $form->tiles_preview_type === self::PREVIEW_ICON ? $form->tiles_icon : null;
         $this->tiles_icon_color = $form->tiles_icon_color;
         $this->tiles_keywords = $form->tiles_keywords;
     }

@@ -16,7 +16,7 @@ Breadcrumbs::root();
 $this->title = Yii::t('ngp/tiles', 'Tiles');
 ?>
 <div class="tiles-index content-container">
-    <?= HeaderPanel::widget(['icon' => FA::_BARS, 'title' => Html::encode($this->title)]) ?>
+    <?= HeaderPanel::widget(['icon' => FA::_TABLE, 'title' => Html::encode($this->title)]) ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

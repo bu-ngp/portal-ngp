@@ -2,7 +2,6 @@
     max-width: 100%;
     width: 330px;
     height: 190px;
-    background-color: #b9b7b8;
     background-color: transparent;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -28,12 +27,13 @@ button > i.fa, a > i.fa {
     text-align: left !important;
 }
 
-.wk-tiles-image-container {
+.wk-tiles-image-container, .wk-tiles-icon-container {
     padding: 0 15px;
 }
 
 .wk-tiles-image-container > div:first-child, .wk-tiles-icon-container > div:first-child {
-    width: 360px;
+    width: 330px;
+    padding: 0;
 }
 
 .wk-tiles-image-container > div:first-child {
@@ -148,7 +148,7 @@ div.wk-tiles-icons > div {
     font-size: 160px;
     color: #d2d2d2;
     top: -20px;
-    left: 95px;
+    left: 80px;
 }
 
 div.wk-tiles-preview-bg {

@@ -24,16 +24,10 @@ $(document).ready(function () {
         $('div.wk-tiles-preview-icon').find('div').attr('class', $('#tilesform-tiles_icon_color').val());
     }
 
-    if ($('#tilesform-tiles_thumbnail').val() !== "") {
+    if ($('#tilesform-tiles_preview_type').val() === 'image') {
         $('.wk-tiles-preview').css("background-image", 'url("' + $('#tilesform-tiles_thumbnail').val() + '")');
-    }
-
-    if ($('#tilesform-tiles_icon').val() !== "") {
-
-        if ($('.wk-tiles-preview').css("background-image") === "none") {
-            $('ul.nav-tabs').find('a[href="#w1-tab1"]').tab('show');
-        }
-
+    } else if ($('#tilesform-tiles_preview_type').val() === 'icon') {
+        $('ul.nav-tabs').find('a[href="#tiles_preview_tabs-tab1"]').tab('show');
         $('div.wk-tiles-preview-icon').find('i').attr('class', $('#tilesform-tiles_icon').val());
     }
 
@@ -79,22 +73,29 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('.wk-tiles-crop').attr('src', e.target.result);
-            $('.wk-tiles-preview').css("background-image", 'url("' + e.target.result + '")');
+            var uploadImage = new Image();
+            uploadImage.src = e.target.result;
+            uploadImage.onload = function () {
+                if (this.width >= 330 && this.height >= 190) {
+                    $('.wk-tiles-crop').attr('src', e.target.result);
+                    $('.wk-tiles-preview').css("background-image", 'url("' + e.target.result + '")');
 
-            if (jcrop_init !== undefined) {
-                jcrop_init.destroy();
-            }
+                    if (jcrop_init !== undefined) {
+                        jcrop_init.destroy();
+                    }
 
-            jcrop_init = $.Jcrop('.wk-tiles-crop', {
-                onChange: showCoords,
-                onSelect: showCoords,
-                aspectRatio: 330 / 190,
-                boxWidth: 866
-                //minSize: [310,190]
-            });
+                    jcrop_init = $.Jcrop('.wk-tiles-crop', {
+                        onChange: showCoords,
+                        onSelect: showCoords,
+                        aspectRatio: 330 / 190,
+                        boxWidth: 866,
+                        minSize: [330, 190]
+                    });
 
-            $('.wk-tiles-crop-button').prop("disabled", false);
+                    $('.wk-tiles-crop-button').prop("disabled", false);
+                    $('#tilesform-tiles_preview_type').val("image");
+                }
+            };
         };
 
         reader.readAsDataURL(input.files[0]);
