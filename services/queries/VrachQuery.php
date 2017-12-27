@@ -17,9 +17,15 @@ class VrachQuery
     {
         return function (ActiveQuery $query) {
             return $query
-                ->select(['profile.profile_inn', 'person_fullname', 'dolzh.dolzh_name'])
+                ->select(['profile.profile_id', 'person_fullname', 'dolzh.dolzh_name'])
                 ->joinWith(['profile', 'employee.dolzh'])
-                ->andWhere(['not', ['profile.profile_inn' => null]]);
+                ->andWhere(['not', ['profile.profile_inn' => null]])
+                ->andWhere([
+                    'or',
+                    ['like', 'dolzh.dolzh_name', 'ВРАЧ ОБЩЕЙ ПРАКТИКИ'],
+                    ['like', 'dolzh.dolzh_name', 'ТЕРАПЕВТ УЧАСТКОВЫЙ'],
+                ])
+                ->andWhere(['person_fired' => null]);
         };
     }
 

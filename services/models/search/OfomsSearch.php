@@ -9,6 +9,7 @@
 namespace ngp\services\models\search;
 
 use domain\models\base\Person;
+use domain\repositories\base\ProfileRepository;
 use ngp\services\models\Ofoms;
 use ngp\services\repositories\OfomsRepository;
 use ngp\services\services\OfomsService;
@@ -25,7 +26,7 @@ class OfomsSearch extends Ofoms
 
     public function __construct($config = [])
     {
-        $this->service = new OfomsService(new OfomsRepository());
+        $this->service = new OfomsService(new OfomsRepository(), new ProfileRepository());
         parent::__construct($config);
     }
 

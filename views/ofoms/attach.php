@@ -23,10 +23,10 @@ $this->title = $modelForm->fam . ' ' . $modelForm->im . ' ' . $modelForm->ot;
         <?= $form->field($modelForm, 'im')->textInput(['wkkeep' => true, 'maxlength' => true, 'disabled' => true]) ?>
         <?= $form->field($modelForm, 'ot')->textInput(['wkkeep' => true, 'maxlength' => true, 'disabled' => true]) ?>
         <?= $form->field($modelForm, 'dr')->textInput(['wkkeep' => true, 'maxlength' => true, 'disabled' => true]) ?>
-        <?= $form->field($modelForm, 'vrach_inn')->select2([
+        <?= $form->field($modelForm, 'person_id')->select2([
             'activeRecordClass' => Person::className(),
-            'activeRecordAttribute' => 'profile_inn',
-            'exceptAttributesFromResult' => ['profile_inn'],
+            'activeRecordAttribute' => 'profile_id',
+            'exceptAttributesFromResult' => ['profile_id', 'profile_inn'],
             'queryCallback' => VrachQuery::select(),
             'ajaxConfig' => [
                 'searchAjaxCallback' => VrachQuery::search(),

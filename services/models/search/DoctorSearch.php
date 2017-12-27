@@ -32,15 +32,19 @@ class DoctorSearch extends SearchModel
 
     public function beforeLoad(ActiveQuery $query, ActiveDataProvider $dataProvider, $params)
     {
-        $query->joinWith([
-            'profile',
-            'employee.dolzh',
-            'employee.podraz',
-        ])->andWhere([
-            'or',
-            ['like', 'dolzh.dolzh_name', 'ВРАЧ ОБЩЕЙ ПРАКТИКИ'],
-            ['like', 'dolzh.dolzh_name', 'ТЕРАПЕВТ УЧАСТКОВЫЙ'],
-        ])->andWhere(['person_fired' => null]);
+        $query
+            ->joinWith([
+                'profile',
+                'employee.dolzh',
+                'employee.podraz',
+            ])
+            ->andWhere(['not', ['profile.profile_inn' => null]])
+            ->andWhere([
+                'or',
+                ['like', 'dolzh.dolzh_name', 'ВРАЧ ОБЩЕЙ ПРАКТИКИ'],
+                ['like', 'dolzh.dolzh_name', 'ТЕРАПЕВТ УЧАСТКОВЫЙ'],
+            ])
+            ->andWhere(['person_fired' => null]);
     }
 
     public function filter()
