@@ -8,6 +8,7 @@
 
 namespace ngp\services\models\search;
 
+use DateTime;
 use domain\models\base\Person;
 use domain\repositories\base\ProfileRepository;
 use ngp\services\models\Ofoms;
@@ -74,7 +75,7 @@ class OfomsSearch extends Ofoms
         return array_map(function ($row) {
             $row['ofomsStatus'] = null;
 
-            if ($row['dend']) {
+            if ($row['dend'] && DateTime::createFromFormat('d.m.Y', $row['dend']) < new DateTime()) {
                 $row['ofomsStatus'] = '<span class="label label-danger" title="' . $row['rstop'] . '">' . Yii::t('ngp/ofoms', 'Removed') . '</span>';
             } else {
                 if ($row['att_lpu_amb'] == '14099') {

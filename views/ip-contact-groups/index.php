@@ -27,7 +27,7 @@ $this->title = Yii::t('ngp/ip-contact', 'Ip Contact Groups');
         ],
         'crudSettings' => [
             'create' => [
-                'url' => 'ip-contact-groups/create',
+                'urlGrid' => 'ip-contact-groups/create',
                 'beforeRender' => function () {
                     return Yii::$app->user->can(RbacHelper::IP_CONTACT_EDIT);
                 },
