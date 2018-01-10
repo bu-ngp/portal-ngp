@@ -25,7 +25,7 @@ $this->title = Yii::t('ngp/ofoms', 'Ofoms Portal');
             'content' => $this->render('_search_panel', ['searchModel' => $searchModel]),
         ]) ?>
 
-        <div class="wk-ofoms-container-results" style="display: none">
+        <div class="wk-ofoms-container-results">
             <?= GridView::widget([
                 'id' => 'ofomsGrid',
                 'dataProvider' => $dataProvider,
