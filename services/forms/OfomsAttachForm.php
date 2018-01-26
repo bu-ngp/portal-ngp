@@ -36,7 +36,7 @@ class OfomsAttachForm extends Model
             [['ot', 'person_id'], 'safe'],
             // [['dr'], WKDateValidator::className()],
             [['enp', 'fam', 'im', 'dr', 'vrach_inn'], 'required'],
-            [['vrach_inn'], 'exist', 'targetClass' => Profile::className(), 'targetAttribute' => 'profile_inn'],
+           // [['vrach_inn'], 'exist', 'targetClass' => Profile::className(), 'targetAttribute' => 'profile_inn'],
         ];
     }
 
